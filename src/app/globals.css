@@ -2,26 +2,106 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+.focus {
+  @apply focus:outline-none focus:ring focus:outline-1 focus:outline-violet-500;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.nav-item {
+  @apply h-full w-full flex justify-center items-center last:border-none border-violet-900/40 border-r;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+/* // prettier-ignore */
+.nav-item-active {
+  @apply nav-item hover:bg-violet-500/40 bg-violet-600/40 first:rounded-tl-md last:rounded-tr-md;
+}
+
+.nav-container {
+  @apply flex items-center h-10 justify-around;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-inherit
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-violet-400 hover:bg-violet-500
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+.icons {
+  @apply flex w-full h-full justify-center items-center cursor-not-allowed opacity-50
+}
+
+.skeleton-loading {
+  @apply animate-pulse
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #a3a3a3;
+}
+
+.separator:not(:empty)::before {
+  margin-right: 1.5em;
+}
+
+.separator:not(:empty)::after {
+  margin-left: 1.5em;
+}
+
+.cross-pattern{
+  background-color: #f8f4ff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23cec3e0' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.auth-input{
+  @apply block w-full rounded-md border-0 py-1.5 
+  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300
+  placeholder:text-gray-400 focus:ring-2 focus:ring-inset
+  focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-3 p-1
+  placeholder:text-sm font-semibold
+}
+
+.plummy-button{
+  @apply flex justify-center rounded-md bg-indigo-600 
+  px-3 py-1.5 text-sm font-semibold leading-6 text-white
+  shadow-sm hover:bg-indigo-500 focus-visible:outline
+  focus-visible:outline-2 focus-visible:outline-offset-2
+  focus-visible:outline-indigo-600
+}
+
+.link{
+  @apply font-semibold leading-6 text-indigo-600 hover:text-indigo-500
+}
+
+.scroll{
+  @apply overflow-y-scroll overflow-x-hidden w-full  h-full rounded-lg
+}
+
+.dropdown-select{
+  @apply py-2 border-b-2 border-purple-500 last:border-none hover:bg-purple-500/40 first:rounded-t-md last:rounded-b-md flex justify-between w-full px-5
+}
+
+.dropdown-success{
+  @apply py-2 border-b-2 border-green-600 last:border-none hover:bg-purple-500/40 first:rounded-t-md last:rounded-b-md flex justify-between w-full px-5
+}
+
+.image-default{
+  @apply h-16 w-16 block rounded-full object-cover
 }
